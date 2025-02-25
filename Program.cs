@@ -9,7 +9,7 @@ try
                    select new Contact(contact.Attribute("firstname").Value,
                    contact.Attribute("lastname").Value,
                    contact.Attribute("phone").Value)
-                   { Mail = contact.Attribute("mail").Value};
+                   { Mail = contact.Attribute("mail")?.Value ?? ""};
 
     foreach (var contact in contacts)
     {
