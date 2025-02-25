@@ -33,9 +33,15 @@ try
     contactElement.Add(phoneAttribute);
 
     rootElement.Add(contactElement);
-    rootElement.Save("contacts.xml");
+    
+    var items = from contact in rootElement.Descendants("contact")
+                where (contact.Attribute("lastname")?.Value ?? "") == "Huber"
+                select contact;
+    items.Remove();
 
+    rootElement.Save("contacts.xml");
 }
+
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);
