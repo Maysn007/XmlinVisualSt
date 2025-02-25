@@ -20,6 +20,21 @@ try
         Console.WriteLine();
     }
 
+    var contact1 = new Contact("John", "Cena", "124512532");
+    var contactElement = new XElement("contact");
+
+    var firstnameAttribute = new XAttribute("firstname", contact1.FirstName);
+    contactElement.Add(firstnameAttribute);
+
+    var lastnameAttribute = new XAttribute("lastname", contact1.LastName);
+    contactElement.Add(lastnameAttribute);
+
+    var phoneAttribute = new XAttribute("phone", contact1.Phone);
+    contactElement.Add(phoneAttribute);
+
+    rootElement.Add(contactElement);
+    rootElement.Save("contacts.xml");
+
 }
 catch (Exception ex)
 {
